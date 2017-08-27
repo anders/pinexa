@@ -22,3 +22,32 @@ $ ./pinexa 0 1 1
 # turn everything off
 $ ./pinexa 1 0 0
 ````
+
+## HomeKit integration
+
+With `homebridge` and `homebridge-cmdswitch2` you can use Siri to control your NEXA devices. Relevant part of my `config.json`:
+
+````json
+"platforms": [
+	{
+		"platform": "cmdSwitch2",
+		"switches": [
+			{
+				"name": "TV",
+				"on_cmd": "/home/pi/onoff 0 1 0",
+				"off_cmd": "/home/pi/onoff 0 0 0"
+			},
+			{
+				"name": "Lamp",
+				"on_cmd": "/home/pi/onoff 0 1 1",
+				"off_cmd": "/home/pi/onoff 0 0 1"
+			},
+			{
+				"name": "HVAC",
+				"on_cmd": "/home/pi/onoff 0 1 2",
+				"off_cmd": "/home/pi/onoff 0 0 2"
+			}
+		]
+	}
+]
+````
